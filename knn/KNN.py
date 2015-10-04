@@ -45,8 +45,20 @@ def  file2matrix(filename):
         index += 1
     return returnMax, classLabelVector
 
-#main function
-#group, labels = createDataSet()
-#print classify0([0,0] ,group, labels, 3)
+def  autoNorm(dataSet):#格式化数据(归一化特征值)
+    minVals = dataSet.min(0)#每列最小值
+    maxVals = dataSet.max(0)
+    ranges = maxVals - minVals
+    normDataSet = zeros(shape(dataSet))
+    normDataSet *= 1
+    m = dataSet.shape[0]
+    normDataSet = dataSet - tile(minVals, (m, 1))
+    normDataSet = normDataSet/tile(ranges, (m,1))
+    return normDataSet , ranges, minVals
+
+#main function(test cases)
+"""
 mat, labels = file2matrix("data.txt")#获取学习数据
+mat = autoNorm(mat)[0]
 print "(1: A, 2: B, 3:C)数据类型是:  %d"%classify0([0,0] ,mat, labels, 2) 
+"""
