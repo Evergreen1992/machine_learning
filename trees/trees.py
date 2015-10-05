@@ -83,7 +83,8 @@ def calcShannonEnt(dataSet):
 """
 print calcShannonEnt(data)
 print splitDataSet(data, 0, 1)
-"""
+
 data, labels = createDataSet()
 tree = createTree(data, labels)
 print tree
+"""
