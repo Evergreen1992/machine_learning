@@ -3,7 +3,7 @@ from math import exp
 from numpy import *
 """逻辑回归"""
 
-#改进的随机梯度上升算法
+#改进的随机梯度上升算法.求最佳回归系数
 def stocGradAscent1(dataMatrix, classLabels, numIter = 150):
     m, n = shape(dataMatrix)
     weights = ones(n)
@@ -19,7 +19,7 @@ def stocGradAscent1(dataMatrix, classLabels, numIter = 150):
     return weights
     
 
-#随机梯度上升算法
+#随机梯度上升算法.求最佳回归系数
 def stocGradAscent0(dataMatrix, classLabels):
     m , n = shape(dataMatrix)
     alpha = 0.01
@@ -39,20 +39,20 @@ def loadDataSet():
         labelMat.append(int(lineArr[2]))
     return dataMat, labelMat
 
-def sigmoid(inX):
-    return 1.0 / (1 + exp(-inX))
+def sigmoid(x):
+    return 1.0 / (1 + exp(-x))
 
-"""梯度上升"""
+#梯度上升算法，求函数的最大值。
 def gradAscent(dataMatIn, classLabels):
     dataMatrix = mat(dataMatIn)#转换成numpy矩阵
     labelMat = mat(classLabels).transpose()#转换成numpy矩阵(转置)
     m, n = shape(dataMatrix)
-    alpha = 0.001
-    maxCycles = 500 
-    weights = ones((n, 1))
+    alpha = 0.001#每次上升的步长
+    maxCycles = 500#执行次数
+    weights = ones((n, 1))#系数的初始化值，初始值为1.
     for k in range(maxCycles):
         h = sigmoid((dataMatrix * weights))
-        error = (labelMat - h)
+        error = (labelMat - h)#误差值。
         weights = weights + alpha * dataMatrix.transpose() * error
     return weights
 
@@ -114,12 +114,19 @@ def mutiTest():
         errorSum += colicTest()
     print "after %d iterations the average error rate is : %f " % (numTests, errorSum / float(numTests))
 
-mutiTest()        
-#dataAttr, labelMat = loadDataSet()
-#weights = gradAscent(dataAttr, labelMat)
-#print weights
-#plotBestFit(weights.getA())
-#weights = stocGradAscent0(array(dataAttr), labelMat)
-#plotBestFit(weights)
-#weights = stocGradAscent1(array(dataAttr), labelMat)
-#plotBestFit(weights)
+"""mutiTest()"""
+  
+dataAttr, labelMat = loadDataSet()
+
+weights = gradAscent(dataAttr, labelMat)
+print weights
+plotBestFit(weights.getA())
+
+weights = stocGradAscent0(array(dataAttr), labelMat)
+print weights
+
+plotBestFit(weights)
+weights = stocGradAscent1(array(dataAttr), labelMat)
+print weights
+
+plotBestFit(weights)
