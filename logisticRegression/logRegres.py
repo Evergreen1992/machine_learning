@@ -13,7 +13,7 @@ def stocGradAscent1(dataMatrix, classLabels, numIter = 150):
             alpha = 4/ (1.0 + j + i ) + 0.01
             randIndex = int(random.uniform(0, len(dataIndex)))
             h = sigmoid(sum(dataMatrix[randIndex] * weights))
-            error = classLabels[randIndex] - h 
+            error = classLabels[randIndex] - h #代价函数。
             weights = weights + alpha * error * dataMatrix[randIndex]
             del(dataIndex[randIndex])
     return weights
@@ -49,11 +49,13 @@ def gradAscent(dataMatIn, classLabels):
     m, n = shape(dataMatrix)
     alpha = 0.001#每次上升的步长
     maxCycles = 500#执行次数
-    weights = ones((n, 1))#系数的初始化值，初始值为1.
+    weights = ones((n, 1))#系数的初始化值，初始值为1。n 行,1列矩阵。
     for k in range(maxCycles):
         h = sigmoid((dataMatrix * weights))
-        error = (labelMat - h)#误差值。
-        weights = weights + alpha * dataMatrix.transpose() * error
+        error = (h - labelMat)#误差值，即是代价函数。
+        # y = a1x1 + a2x2
+        # z = sigmoid(y) - h
+        weights = weights - alpha * dataMatrix.transpose() * error
     return weights
 
 def plotBestFit(weights):
@@ -115,18 +117,18 @@ def mutiTest():
     print "after %d iterations the average error rate is : %f " % (numTests, errorSum / float(numTests))
 
 """mutiTest()"""
+
   
 dataAttr, labelMat = loadDataSet()
-
 weights = gradAscent(dataAttr, labelMat)
 print weights
 plotBestFit(weights.getA())
 
-weights = stocGradAscent0(array(dataAttr), labelMat)
-print weights
+#weights = stocGradAscent0(array(dataAttr), labelMat)
+#print weights
 
-plotBestFit(weights)
-weights = stocGradAscent1(array(dataAttr), labelMat)
-print weights
+#plotBestFit(weights)
+#weights = stocGradAscent1(array(dataAttr), labelMat)
+#print weights
 
-plotBestFit(weights)
+#plotBestFit(weights)

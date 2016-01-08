@@ -2,6 +2,15 @@
 from math import log
 import operator
 
+#判断海洋生物的是否属于鱼类。
+
+def createDataSet():
+    #输入数据集分别代表：不浮出水面是否可以生存、是否有脚蹼、是否属于鱼类
+    dataSet = [[1,1,'yes'],[1,1,'yes'],[1,0,'no'],[0,1,'no'],[0,1,'no']]
+    labels = ['no surfacing', 'flippers']
+    return dataSet, labels
+
+
 #创建决策树
 def createTree(dataSet, labels):
     classList = [example[-1] for example in dataSet]
@@ -50,11 +59,6 @@ def chooseBestFeatureToSplit(dataSet):
             bestFeature = i
     return bestFeature
 
-def createDataSet():
-    dataSet = [[1,1,'yes'],[1,1,'yes'],[1,0,'no'],[0,1,'no'],[0,1,'no']]
-    labels = ['no surfacing', 'flippers']
-    return dataSet, labels
-
 #划分数据集(数据集,数据集特征,特征返回值)
 def splitDataSet(dataSet, axis, value):
     retDataSet = []
@@ -80,11 +84,10 @@ def calcShannonEnt(dataSet):
         shannonEnt -= prob * log(prob, 2)
     return shannonEnt
 
-"""
-print calcShannonEnt(data)
-print splitDataSet(data, 0, 1)
+
+#print calcShannonEnt(data)
+#print splitDataSet(data, 0, 1)
 
 data, labels = createDataSet()
 tree = createTree(data, labels)
 print tree
-"""

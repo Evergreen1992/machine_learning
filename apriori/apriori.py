@@ -1,6 +1,6 @@
 #encoding=utf-8
 #使用apriori进行关联分析
-print "----------------Apriori----------------"
+print "----------------Apriori关联分析----------------"
 
 def loadDataSet():
     return [[1,3,4],

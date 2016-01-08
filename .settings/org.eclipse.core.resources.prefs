@@ -1,7 +1,11 @@
 eclipse.preferences.version=1
+encoding//apriori/apriori.py=utf-8
 encoding//bayes/bayes.py=utf-8
+encoding//k-means/k-means.py=UTF-8
 encoding//knn/KNN.py=utf-8
 encoding//knn/knnExamples.py=utf-8
 encoding//logisticRegression/logRegres.py=utf-8
+encoding//svd/svd.py=utf-8
 encoding//trees/treePlotter.py=utf-8
 encoding//trees/trees.py=utf-8
+encoding/test.py=UTF8

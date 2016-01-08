@@ -2,7 +2,7 @@
 
 from numpy import *
 
-"""使用朴素贝叶斯进行文本分类"""
+"""使用朴素贝叶斯进行文档分类的例子"""
 
 def loadDataSet():
     postingList=[['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],

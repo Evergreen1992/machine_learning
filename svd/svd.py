@@ -2,7 +2,7 @@
 from numpy import *
 from numpy import linalg as la
 
-print ".......SVD奇异值分解,用于推荐系统........."
+print ".......SVD奇异值分解，进行数据降维处理........."
 
 def loadExData():#用户评分数据
     return mat([
