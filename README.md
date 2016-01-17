@@ -20,3 +20,15 @@
 - 数据过拟合
 - 数据欠拟合
 - 主成分分析
+
+---
+
+##### python机器学习包
+- matplotlib
+- pandas
+- numpy
+- scikit-learn
+
+##### google深度学习框架TensorFlow
+
+---
