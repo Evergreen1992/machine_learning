@@ -28,7 +28,9 @@
 - pandas
 - numpy
 - scikit-learn
+- seaborn
+
+---
 
 ##### google深度学习框架TensorFlow
 
----
